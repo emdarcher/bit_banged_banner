@@ -121,7 +121,7 @@ void init_life_blinker(void);
 void short_delay(void);
 void tiny_delay(void);
 
-//functions to control the graphical 8x20 VFD
+//functions to control the graphical 20x8 VFD
 void display_write(uint8_t addr, uint8_t data);
 void display_control(uint8_t addr, uint8_t data);
 void display_init(void);
@@ -146,7 +146,7 @@ void init_life_blinker(void){
     TR0 = 1;
 }
 
-//puts a message out to our 2x20 character serial VFD 
+//puts a message out to our 20x2 character serial VFD 
 void put_message(const char * in_str){
     uint8_t i;
     //copy in the blank string to the buffer
@@ -246,8 +246,10 @@ void display_enable(bool enable){
 void display_write_addr(uint8_t addr){
     uint8_t tmp_port;
     tmp_port = DISP_ADDR_PORT & 0b11000000; //get a copy w/ the upper bits
-    //write the temp value but with the address bits OR'd in, to the port
-    //(address must be 6 bits)
+    //address must be 6 bits so we take off the top two bits 
+    //just in case of a bad input value. 
+    addr &= 0b00111111;
+    //write the temp value with the address bits OR'd in, to the port
     DISP_ADDR_PORT = tmp_port | addr;
 }
 

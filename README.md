@@ -66,6 +66,7 @@ To convert the `main.ihx` file and write the output to the new file `main.hex`:
 ```
 packihx main.ihx > main.hex
 ```
+The compiled firmware will be around 1KiB in size when flashed to the microcontroller.
 
 ### Flashing the Microcontroller:
 To Flash the Microcontroller I used the TL866CS MiniPro Programmer, which seems to be able to flash almost any MCU or EPROM I've found. Any TL866 version should work.
