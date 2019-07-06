@@ -10,6 +10,14 @@ A few days before July 4th, 2019, I acquired one of these bi-color graphical VFD
 
 ## Hardware Information:
 
+The Whole circuit is powered by a 5V DC supply.
+
+### Schematic Diagram:
+
+Full Size PDF [here](bit_banged_banner_schem.pdf).
+
+![Schematic of the Circuit](bit_banged_banner_small_schem.png)
+
 ### Noritake Itron GU20X8:
 This is a nice 20x8 pixel Blue/Red Vacuum Fluorescent Display that is controlled through a Parallel type interface. You can find these for pretty cheap from China for around $16 USD on Ebay or Aliexpress.
 
@@ -34,18 +42,18 @@ This is your typical Serial interface 20x2 Character VFD salvaged from an old Po
 * This display, and I believe many others like it, require an **INVERTED** serial input signal at 9600 baud. So make sure you invert the signal or you will get strange output. I used a standard 7404 Hex Inverter IC to provide the inverter for the signal. 
 * As for the codec, this display can take standard 7 and 8 bit ASCII codes. So just send ASCII characters over serial and they will show up on the display.
 
-## 8051 Microcontroller:
+### 8051 Microcontroller:
 I used an AT89C51 which is one of many 8051 clones out there, but really any 8051 compatible chip should work, with a possible few minor modifications. 
 
 I've been learning to use 8051 MCUs just for fun recently, so decided to use one in this project because I already had one ready to go. It's an old MCU type, but I have been enjoying it so far.
 
-## LEDs:
+#### LEDs:
 I have two LEDs attached to pins on the MCU for debugging purposes. Feel free to remove them and the code for them if you don't want the LEDs. One is a Timer interrupt driven blinker, just to show that the MCU is alive. The other debug LED will start blinking only after all the display write instructions have finished, to verify that nothing is getting stuck, like waiting for the display "BUSY" signal to go LOW, or something else.
 
-# Programming Information:
+## Programming Information:
 For the Code, I used the Open Source [Small Device C Compiler (sdcc)](http://sdcc.sourceforge.net/) for compilation. I used a Mac this time, but it should work on Linux as well. Don't know much for Windows, but it's probably similar. On Mac this can be installed using [HomeBrew](https://brew.sh/) with `brew install sdcc`. On Linux, you can use your package manager, or just install from source.
 
-## Compilation:
+### Compilation:
 to compile the code simply use `sdcc` like so:
 ```
 sdcc main.c
@@ -58,7 +66,7 @@ To convert the `main.ihx` file and write the output to the new file `main.hex`:
 packihx main.ihx > main.hex
 ```
 
-## Flashing the Microcontroller:
+### Flashing the Microcontroller:
 To Flash the Microcontroller I used the TL866CS MiniPro Programmer, which seems to be able to flash almost any MCU or EPROM I've found. Any TL866 version should work.
 I use this programmer because it has a great Open Source tool available for it called `minipro` which you can find here:
 https://gitlab.com/DavidGriffith/minipro/
@@ -67,5 +75,4 @@ To flash we use the included tool `miniprohex` as it can flash using a `*.hex` f
 ```
 miniprohex -p at89c51 -w main.hex -s
 ```
-
 
