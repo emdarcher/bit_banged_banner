@@ -12,15 +12,18 @@ A few days before July 4th, 2019, I acquired one of these bi-color graphical VFD
 
 ### Noritake Itron GU20X8:
 This is a nice 20x8 pixel Blue/Red Vacuum Fluorescent Display that is controlled through a Parallel type interface. You can find these for pretty cheap from China for around $16 USD on Ebay or Aliexpress.
+
 Some example links:
-[Link on Ebay](https://www.ebay.com/itm/20x8-VFD-Screen-Panel-3-Color-Graphical-Lattice-SCM-Vacuum-Fluorescent-Display/273373691704?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649)
-[Link on Aliexpress](https://www.aliexpress.com/item/32638805488.html)
+- [Link on Ebay](https://www.ebay.com/itm/20x8-VFD-Screen-Panel-3-Color-Graphical-Lattice-SCM-Vacuum-Fluorescent-Display/273373691704?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649)
+- [Link on Aliexpress](https://www.aliexpress.com/item/32638805488.html)
 
 There is not a lot of documentation that I could find for these displays. But [cawapy](https://github.com/cawapy), a kind user on GitHub created a repository that documents interfacing with this device in great detail, including an Arduino Example. If you want to try these displays out, I highly recommend reading their docs.
+
 The repository can be found here:
 https://github.com/cawapy/GU20X8
 
 Another awesome example using this display was done by user [natalie](https://hackaday.io/natalieee) on hackaday.io doing video and audio output for the Classic Japanese "Bad Apple!!" animated music video.
+
 Link to the project:
 https://hackaday.io/project/164433-bad-apple-color-vfd-ver
 
