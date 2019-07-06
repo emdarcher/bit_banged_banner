@@ -10,7 +10,7 @@ A few days before July 4th, 2019, I acquired one of these bi-color graphical VFD
 
 ## Hardware Information:
 
-The whole circuit is powered by a 5V DC supply. I used a small homemade board with a 7805 5V regulator connected to a 12V DC wall transformer, but really any 5V DC source that can supply over 1A current should be safe.
+The whole circuit is powered by a 5V DC supply. I used a small homemade board with a 7805 5V regulator connected to a 12V DC wall-plug transformer, but really any 5V DC source that can supply over 1A current should be safe.
 
 ### Schematic Diagram:
 
@@ -38,7 +38,7 @@ https://hackaday.io/project/164433-bad-apple-color-vfd-ver
 ### Futaba T202MD15AA:
 This is your typical Serial interface 20x2 Character VFD salvaged from an old Point of Sale (POS) machine.
 
-#### Notes on the interfacing with the serial character VFD:
+#### Notes on interfacing with the serial character VFD:
 * This display, and I believe many others like it, require an **INVERTED** serial input signal at 9600 baud. So make sure you invert the signal or you will get strange output. I used a standard 7404 Hex Inverter IC to provide the inverter for the signal. 
 * As for the codec, this display can take standard 7 and 8 bit ASCII codes. So just send ASCII characters over serial and they will show up on the display.
 
@@ -54,13 +54,14 @@ I have two LEDs attached to pins on the MCU for debugging purposes. Feel free to
 For the Code, I used the Open Source [Small Device C Compiler (sdcc)](http://sdcc.sourceforge.net/) for compilation. I used a Mac this time, but it should work on Linux as well. Don't know much for Windows, but it's probably similar. On Mac this can be installed using [HomeBrew](https://brew.sh/) with `brew install sdcc`. On Linux, you can use your package manager, or just install from source.
 
 ### Compilation:
-to compile the code simply use `sdcc` like so:
+To compile the code simply use `sdcc` like so:
 ```
 sdcc main.c
 ```
 
 After compilation you need to convert the Intel Hex `*.ihx` output to a regular hex file `*.hex`.
 You can do this using the `packihx` tool that comes with SDCC.
+
 To convert the `main.ihx` file and write the output to the new file `main.hex`:
 ```
 packihx main.ihx > main.hex
@@ -71,7 +72,7 @@ To Flash the Microcontroller I used the TL866CS MiniPro Programmer, which seems 
 I use this programmer because it has a great Open Source tool available for it called `minipro` which you can find here:
 https://gitlab.com/DavidGriffith/minipro/
 
-To flash we use the included tool `miniprohex` as it can flash using a `*.hex` file. The programming command I used is below. If you are using a different 8051 clone instead of the `at89c51` then make sure to change that part of the command.
+To flash we use the tool `miniprohex` from minipro, as it can flash using a `*.hex` file. The programming command I used is below. **NOTE:** If you are using a different 8051 clone instead of the `at89c51` then make sure to change that part of the command.
 ```
 miniprohex -p at89c51 -w main.hex -s
 ```
