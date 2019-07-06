@@ -10,7 +10,7 @@ A few days before July 4th, 2019, I acquired one of these bi-color graphical VFD
 
 ## Hardware Information:
 
-The Whole circuit is powered by a 5V DC supply.
+The whole circuit is powered by a 5V DC supply. I used a small homemade board with a 7805 5V regulator connected to a 12V DC wall transformer, but really any 5V DC source that can supply over 1A current should be safe.
 
 ### Schematic Diagram:
 
